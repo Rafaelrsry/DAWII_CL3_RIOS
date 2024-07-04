@@ -1,1 +1,8 @@
-<p>todos works!</p>
+<div>
+    <h2>Filtered Todos (ID 25-90 and Completed)</h2>
+    <ul>
+      <li *ngFor="let todo of todos">
+        {{ todo.id }} - {{ todo.title }} (Completed: {{ todo.completed }})
+      </li>
+    </ul>
+  </div>

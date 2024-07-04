@@ -1,12 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TodosService } from '../../service/todos.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-todos',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './todos.component.html',
   styleUrl: './todos.component.css'
 })
-export class TodosComponent {
-
+export class TodosComponent implements OnInit{
+  todos: any[] = [];
+  constructor(private todosService: TodosService) { }
+  ngOnInit(): void {
+    this.todosService.getFilteredTodos().subscribe(
+      (data: any[]) => {
+        this.todos = data;
+      },
+      (error) => {
+        console.error('Error fetching todos:', error);
+      }
+    );
+  }
 }

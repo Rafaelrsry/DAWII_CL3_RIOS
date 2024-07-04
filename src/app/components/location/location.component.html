@@ -1,1 +1,8 @@
-<p>location works!</p>
+<div>
+    <h2>Locations of Type "Planet"</h2>
+    <ul>
+      <li *ngFor="let location of locations">
+        {{ location.name }} - {{ location.dimension }}
+      </li>
+    </ul>
+  </div>
